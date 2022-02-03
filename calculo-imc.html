@@ -1,0 +1,52 @@
+<!Doctype html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <title>Calculo IMC</title>
+    <script type="text/javascript">
+        function calcular(){
+            // pegando o id do formulario
+            var formulario = document.getElementById("formulario");
+
+
+            var kilos = +formulario.kilos.value;
+            var metros = +formulario.metros.value;
+            //var centimetros = +formulario.centimetros.value;
+
+            // altura
+            var altura = metros / 100;
+
+            // imc
+            var imc = kilos / (altura * altura);
+
+            // o metodo toFixed fixa apenas duas casas decimais apos o ponto.
+            formulario.imc.value = imc.toFixed(1);
+
+            if(imc < 18.5) alert('Magreza, quando o resultado é menor que 18,5 kg/m2.');
+            if(imc >= 18.5 && imc < 24.9) alert("Normal, quando o resultado está entre 18,5 e 24,9 kg/m2;");
+            if(imc >= 24.9 && imc <= 30) alert("Sobrepeso, quando o resultado está entre 24,9 e 30 kg/m2;");
+            if(imc > 30) alert("Obesidade, quando o resultado é maior que 30 kg/m2;");
+
+        }
+    </script>
+</head>
+<body>
+<form id="formulario">
+    <fieldset>
+        <legend>Calculo IMC</legend>
+
+        <label for="kilos">Kilos:</label>
+        <input name="kilos" type="text" />
+
+        <label for="metros">altura em cm:</label>
+        <input name="metros" type="text" />
+
+        <label for="imc">imc:</label>
+        <input name="imc" type="text" disabled="disabled" />
+
+        <a href="#" onclick="calcular();">Calcular</a>
+    </fieldset>
+</form>
+</body>
+</html>
